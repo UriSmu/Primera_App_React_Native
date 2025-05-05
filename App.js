@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const frases = [
   "¡Hola, mundo!",
-  "Matteria: DAI",
+  "Materia: DAI",
   "Profe: Jesi",
   "React Native",
   "Hola Vito"
@@ -24,6 +24,7 @@ const useGenerateRandomColor = () => {                              //ESTO FUE S
 export default function App() {
   const { color, generateColor } = useGenerateRandomColor();
   const [texto, setTexto] = useState(frases[0]);
+  const ambas = () => {generateColor(); changeText();}
 
   const changeText = () => {                                          //ESTO FUE SACADO DE LA WEB
     const randomIndex = Math.floor(Math.random() * frases.length);
@@ -39,7 +40,9 @@ export default function App() {
       <View style={styles.buttonContainer}>
         <Button onPress={changeText} title="Cambiar Texto" color={`#${color}`} />
       </View>
-      
+      <View style={styles.buttonContainer}>
+        <Button onPress={ambas} title="Cambiar Ambas" color={`#${color}`} />
+      </View>
       <StatusBar style="auto" />
     </View>
   );
